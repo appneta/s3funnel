@@ -63,6 +63,7 @@ def main():
     parser.add_option("-a", "--aws_key",    dest="aws_key", type="string", help="Overrides AWS_ACCESS_KEY_ID environment variable")
     parser.add_option("-s", "--aws_secret_key", dest="aws_secret_key", type="string", help="Overrides AWS_SECRET_ACCESS_KEY environment variable")
     parser.add_option("-t", "--threads",    dest="numthreads", default=1, type="int", metavar="N", help="Number of threads to use [default: %default]")
+    parser.add_option("-r", "--retry",      dest="retry", default=5, type="int", metavar="N", help="Number of times to retry connection errors")
     parser.add_option("-T", "--timeout",    dest="timeout", default=0, type="float", metavar="SECONDS", help="Socket timeout time, 0 is never [default: %default]")
     parser.add_option("--insecure",         dest="secure", action="store_false", default=True, help="Don't use secure (https) connection")
     parser.add_option("--list-marker",      dest="list_marker", type="string", default=None, metavar="KEY", help="(`list` only) Start key for list operation")
@@ -173,6 +174,7 @@ def main():
               'del_prefix': options.del_prefix,
               'headers': headers,
               'numthreads': options.numthreads,
+              'retry': options.retry,
               'ignore_s3fs_dirs': options.ignore_s3fs_dirs
               }
 
