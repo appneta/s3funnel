@@ -156,6 +156,7 @@ class PutJob(Job):
                 break
 
         log.error("Failed to put: %s" % self.key)
+        raise JobError()
 
     def run(self, toolbox):
         try:
